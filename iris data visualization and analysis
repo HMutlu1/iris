@@ -1,0 +1,116 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline
+
+
+
+iris = pd.read_csv('iris.csv')
+iris
+
+iris.groupby('species').agg(['mean', 'median'])
+
+iris.groupby('species').std()
+
+
+# box plot
+
+sns.set(style="ticks") 
+plt.figure(figsize=(12,10))
+plt.subplot(2,2,1)
+sns.boxplot(x='species',y='sepal length (cm)',data=iris)
+plt.subplot(2,2,2)
+sns.boxplot(x='species',y='sepal width (cm)',data=iris)
+plt.subplot(2,2,3)
+sns.boxplot(x='species',y='petal length (cm)',data=iris)
+plt.subplot(2,2,4)
+sns.boxplot(x='species',y='petal width (cm)',data=iris)
+plt.show()
+
+
+
+
+# violin plot
+
+sns.set(style='whitegrid')
+plt.figure(figsize=(12,10))
+plt.subplot(2,2,1)
+sns.violinplot(x='species',y='sepal length (cm)',data=iris)
+plt.subplot(2,2,2)
+sns.violinplot(x='species',y='sepal width (cm)',data=iris)
+plt.subplot(2,2,3)
+sns.violinplot(x='species',y='petal length (cm)',data=iris)
+plt.subplot(2,2,4)
+sns.violinplot(x='species',y='petal width (cm)',data=iris)
+plt.show()
+
+
+iris.shape
+iris.describe()
+iris.info()
+
+iris.isnull().sum()
+
+sns.pairplot(iris)
+
+
+plt.figure(figsize=(10,11))
+sns.heatmap(iris.corr(),annot=True, cmap="coolwarm")
+plt.plot()
+
+
+
+plt.figure(figsize=(16,9))
+plt.title('İris Çiçeği Türlerine Göre Çanak Yaprak Uzunluğu ve Genişliği Dağılımı')
+sns.scatterplot(iris['sepal length (cm)'], iris['sepal width (cm)'], hue = iris['species'], s= 100);
+
+
+plt.figure(figsize=(16,9))
+plt.title('İris Çiçeği Türlerine Göre Taç Yaprak Uzunluğu ve Genişliği Dağılımı')
+sns.scatterplot(iris['petal length (cm)'], iris['petal width (cm)'], hue = iris['species'], s= 100);
+
+
+sns.pairplot(iris,hue="species",height=3);
+
+
+
+
+fig, axes = plt.subplots(2, 2, figsize=(16,9))
+axes[0,0].set_title("Sepal Leaf Width Distribution")
+axes[0,0].hist(iris['sepal width (cm)'], bins=5);
+axes[0,1].set_title("Sepal Leaf Length Distribution")
+axes[0,1].hist(iris['sepal length (cm)'], bins=7);
+axes[1,0].set_title("Petal Width Distribution")
+axes[1,0].hist(iris['petal width (cm)'], bins=5);
+axes[1,1].set_title("Petal Length Distribution")
+axes[1,1].hist(iris['petal length (cm)'], bins=6);
+
+
+
+sns.FacetGrid(iris,hue="species",height=5).map(sns.distplot,"petal width (cm)").add_legend();
+
+sns.FacetGrid(iris,hue="species",height=5).map(sns.distplot,"petal length (cm)").add_legend();
+
+sns.FacetGrid(iris,hue="species",height=5).map(sns.distplot,"sepal length (cm)").add_legend();
+
+sns.FacetGrid(iris,hue="species",height=5).map(sns.distplot,"sepal width (cm)").add_legend();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
