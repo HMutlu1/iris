@@ -62,12 +62,12 @@ plt.plot()
 
 
 plt.figure(figsize=(16,9))
-plt.title('İris Çiçeği Türlerine Göre Çanak Yaprak Uzunluğu ve Genişliği Dağılımı')
+plt.title('Leaf Length and Width Distribution by Iris Flower Types')
 sns.scatterplot(iris['sepal length (cm)'], iris['sepal width (cm)'], hue = iris['species'], s= 100);
 
 
 plt.figure(figsize=(16,9))
-plt.title('İris Çiçeği Türlerine Göre Taç Yaprak Uzunluğu ve Genişliği Dağılımı')
+plt.title('Petal Length and Width Distribution by Iris Flower Types')
 sns.scatterplot(iris['petal length (cm)'], iris['petal width (cm)'], hue = iris['species'], s= 100);
 
 
